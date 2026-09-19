@@ -1,0 +1,25 @@
+=== PYTHON MULTIPROCESSING (N=2500, processos=4) ===
+Leitura                : 0.248575 s
+Setup (memoria compart.): 0.687310 s
+Criacao do pool (fork) : 0.067471 s
+Eliminacao             : 1918.018675 s  <-- hotspot (paralelismo real)
+TOTAL                  : 1920.045739 s
+
+ Performance counter stats for 'python3 programa_multiprocess.py 2500 matriz.bin 4 inversa_perf_m4.bin':
+
+           102,276      context-switches                 #     13.5 cs/sec  cs_per_second     
+             2,103      cpu-migrations                   #      0.3 migrations/sec  migrations_per_second
+           273,064      page-faults                      #     36.0 faults/sec  page_faults_per_second
+      7,587,045.67 msec task-clock                       #      4.0 CPUs  CPUs_utilized       
+    63,283,061,782      branch-misses                    #      0.6 %  branch_miss_rate         (33.33%)
+10,994,576,882,803      branches                         #   1449.1 M/sec  branch_frequency     (50.00%)
+21,905,786,942,545      cpu-cycles                       #      2.9 GHz  cycles_frequency       (50.00%)
+55,794,316,117,638      instructions                     #      2.5 instructions  insn_per_cycle  (50.00%)
+ 3,120,316,433,551      stalled-cycles-frontend          #     0.14 frontend_cycles_idle        (50.00%)
+
+    1920.293661040 seconds time elapsed
+
+    7584.697070000 seconds user
+       2.695977000 seconds sys
+
+

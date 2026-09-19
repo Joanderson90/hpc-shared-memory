@@ -1,0 +1,27 @@
+Matriz 2500x2500 carregada de 'matriz.bin' (orientacao: linha, threads: 8)
+
+=== Medicao interna de tempo (clock_gettime, CLOCK_MONOTONIC) ===
+Leitura da matriz         : 0.179445 s
+Montagem matriz aumentada : 0.056236 s
+Eliminacao Gauss-Jordan   : 27.532333 s  (8 threads)
+Escrita da inversa        : 0.010617 s
+TOTAL (programa)          : 27.807845 s
+
+ Performance counter stats for './programa_openmp 2500 matriz.bin linha /tmp/out.bin':
+
+            24,268      context-switches                 #    121.6 cs/sec  cs_per_second     
+             1,972      cpu-migrations                   #      9.9 migrations/sec  migrations_per_second
+            56,673      page-faults                      #    283.9 faults/sec  page_faults_per_second
+        199,615.86 msec task-clock                       #      7.2 CPUs  CPUs_utilized       
+        16,100,703      branch-misses                    #      0.0 %  branch_miss_rate         (33.34%)
+    40,570,742,494      branches                         #    203.2 M/sec  branch_frequency     (50.02%)
+   728,874,064,985      cpu-cycles                       #      3.7 GHz  cycles_frequency       (49.99%)
+   283,787,465,997      instructions                     #      0.4 instructions  insn_per_cycle  (50.00%)
+   639,892,934,249      stalled-cycles-frontend          #     0.88 frontend_cycles_idle        (49.99%)
+
+      27.823241504 seconds time elapsed
+
+     198.075354000 seconds user
+       1.604507000 seconds sys
+
+

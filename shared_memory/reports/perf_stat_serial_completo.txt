@@ -1,0 +1,26 @@
+Matriz 2500x2500 carregada de 'matriz.bin' (orientacao: linha)
+
+=== Medicao interna de tempo (clock_gettime, CLOCK_MONOTONIC) ===
+Leitura da matriz         : 0.026514 s
+Montagem matriz aumentada : 0.032257 s
+Eliminacao Gauss-Jordan   : 31.015823 s
+Escrita da inversa        : 0.010869 s
+TOTAL (programa)          : 31.115468 s
+
+ Performance counter stats for './programa_serial 2500 matriz.bin linha /tmp/out.bin':
+
+   114,961,487,318      cycles                                                                  (57.14%)
+   250,680,900,282      instructions                                                            (71.43%)
+     2,198,315,811      cache-references                                                        (71.43%)
+       865,814,609      cache-misses                                                            (71.43%)
+         7,990,453      branch-misses                                                           (71.43%)
+    31,389,555,816      branches                                                                (71.43%)
+     7,868,324,722      L1-dcache-load-misses                                                   (57.14%)
+   <not supported>      LLC-load-misses                                                       
+
+      31.129553329 seconds time elapsed
+
+      31.009170000 seconds user
+       0.112993000 seconds sys
+
+

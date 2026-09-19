@@ -1,0 +1,24 @@
+=== PYTHON SERIAL (N=2500) ===
+Leitura           : 0.341394 s
+Setup (montagem)  : 0.352904 s
+Eliminacao        : 1776.773211 s
+TOTAL             : 1777.859397 s
+
+ Performance counter stats for 'python3 programa_serial.py 2500 matriz.bin inversa_perf_serial.bin':
+
+            17,228      context-switches                 #      9.7 cs/sec  cs_per_second     
+               117      cpu-migrations                   #      0.1 migrations/sec  migrations_per_second
+           270,338      page-faults                      #    152.1 faults/sec  page_faults_per_second
+      1,777,856.15 msec task-clock                       #      1.0 CPUs  CPUs_utilized       
+       540,965,948      branch-misses                    #      0.0 %  branch_miss_rate         (33.33%)
+ 3,667,714,055,356      branches                         #   2063.0 M/sec  branch_frequency     (50.00%)
+ 6,864,765,494,916      cpu-cycles                       #      3.9 GHz  cycles_frequency       (50.00%)
+20,139,882,977,713      instructions                     #      2.9 instructions  insn_per_cycle  (50.00%)
+ 2,025,305,368,895      stalled-cycles-frontend          #     0.29 frontend_cycles_idle        (50.00%)
+
+    1778.092721964 seconds time elapsed
+
+    1777.466255000 seconds user
+       0.390950000 seconds sys
+
+

@@ -1,0 +1,8 @@
+versao=openmp_blocking
+N=3000
+B=64
+threads=1
+tempo_leitura_s=0.035648
+tempo_setup_s=0.043965
+tempo_eliminacao_s=26.875807
+tempo_total_s=27.125703

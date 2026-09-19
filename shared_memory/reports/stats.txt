@@ -1,0 +1,9 @@
+versao=openmp
+N=2500
+orientacao=linha
+threads=4
+tempo_leitura_s=0.024101
+tempo_setup_s=0.029617
+tempo_eliminacao_s=24.589308
+tempo_escrita_s=0.114978
+tempo_total_s=24.788808

@@ -1,0 +1,7 @@
+versao=C_openmp_float
+N=3000
+threads=8
+tempo_leitura_s=0.301353
+tempo_setup_s=0.031576
+tempo_eliminacao_s=22.640079
+checksum=3.989488

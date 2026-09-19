@@ -1,0 +1,23 @@
+=== PYTHON SERIAL (N=2500) ===
+Leitura           : 0.343320 s
+Setup (montagem)  : 0.373832 s
+Eliminacao        : 1806.294821 s
+TOTAL             : 1807.405275 s
+
+ Performance counter stats for 'python3 programa_serial.py 2500 matriz.bin inversa_perf_serial2.bin':
+
+ 6,954,469,337,519      cycles                                                                  (57.14%)
+20,137,186,466,127      instructions                                                            (71.43%)
+     4,706,318,296      cache-references                                                        (71.43%)
+     1,327,986,858      cache-misses                                                            (71.43%)
+       829,884,976      branch-misses                                                           (71.43%)
+ 3,668,144,408,633      branches                                                                (71.43%)
+    41,780,609,102      L1-dcache-load-misses                                                   (57.14%)
+   <not supported>      LLC-load-misses                                                       
+
+    1807.633995449 seconds time elapsed
+
+    1806.547512000 seconds user
+       0.812902000 seconds sys
+
+

@@ -1,0 +1,420 @@
+--------------------------------------------------------------------------------
+Profile data file 'callgrind.out' (creator: callgrind-3.26.0)
+--------------------------------------------------------------------------------
+I1 cache: 
+D1 cache: 
+LL cache: 
+Timerange: Basic block 0 - 31538715
+Trigger: Program termination
+Profiled target:  ./programa_serial 250 matriz_pequena.bin linha /tmp/out.bin (PID 7771, part 1)
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Thresholds:       99
+Include dirs:     
+User annotated:   
+Auto-annotation:  on
+
+--------------------------------------------------------------------------------
+Ir                   
+--------------------------------------------------------------------------------
+250,940,942 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir                    file:function
+--------------------------------------------------------------------------------
+250,197,541 (99.70%)  programa_serial.c:main [/home/joanderson/high-performance-computing/shared_memory/scripts/programa_serial]
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: programa_serial.c
+--------------------------------------------------------------------------------
+Ir                   
+
+-- line 57 ----------------------------------------
+          .               return s + ns;
+          .           }
+          .           
+          .           /* ---------------------------------------------------------------------- */
+          .           /* Leitura da matriz do arquivo binario (N*N doubles, row-major, sem       */
+          .           /* cabecalho)                                                              */
+          .           /* ---------------------------------------------------------------------- */
+          .           static int read_matrix(const char *path, int N, double *A)
+         21 ( 0.00%)  {
+         27 ( 0.00%)      FILE *f = fopen(path, "rb");
+         11 ( 0.00%)      if (!f)
+          .               {
+          .                   fprintf(stderr, "Erro: nao foi possivel abrir '%s'\n", path);
+          .                   return 0;
+          .               }
+          .           
+          .               size_t expected = (size_t)N * N;
+          .               size_t read_count = fread(A, sizeof(double), expected, f);
+          .               fclose(f);
+          4 ( 0.00%)  
+        625 ( 0.00%)  => ???:0x0000000004001200 (1x)
+          2 ( 0.00%)      if (read_count != expected)
+          .               {
+          .                   fprintf(stderr, "Erro: arquivo '%s' tem %zu elementos, esperado %zu "
+          .                                   "(N=%d nao confere com o arquivo)\n",
+          .                           path, read_count, expected, N);
+          .                   return 0;
+          .               }
+          .               return 1;
+          2 ( 0.00%)  }
+        615 ( 0.00%)  => ???:0x0000000004001170 (1x)
+          .           
+          2 ( 0.00%)  /* ---------------------------------------------------------------------- */
+          .           /* Escrita da matriz (N*N doubles, row-major, sem cabecalho)               */
+          .           /* ---------------------------------------------------------------------- */
+          .           static int write_matrix(const char *path, int N, const double *A)
+          .           {
+          .               FILE *f = fopen(path, "wb");
+          .               if (!f)
+          .               {
+          .                   fprintf(stderr, "Erro: nao foi possivel criar '%s'\n", path);
+          .                   return 0;
+          .               }
+          .               size_t expected = (size_t)N * N;
+          .               size_t written = fwrite(A, sizeof(double), expected, f);
+          .               fclose(f);
+          .               return written == expected;
+          4 ( 0.00%)  }
+        587 ( 0.00%)  => ???:0x0000000004001200 (1x)
+          3 ( 0.00%)  
+          .           /* ---------------------------------------------------------------------- */
+          .           /* Monta a matriz aumentada [A | I] de tamanho N x 2N                      */
+          1 ( 0.00%)  /* Layout: M[i * (2N) + j], row-major                                      */
+          .           /* ---------------------------------------------------------------------- */
+          .           static double *build_augmented(int N, const double *A)
+          .           {
+          .               int W = 2 * N;
+          .               double *M = (double *)calloc((size_t)N * W, sizeof(double));
+          .               if (!M)
+          .                   return NULL;
+          .           
+          .               for (int i = 0; i < N; i++)
+          .               {
+          .                   for (int j = 0; j < N; j++)
+          .                   {
+          .                       M[(size_t)i * W + j] = A[(size_t)i * N + j];
+          1 ( 0.00%)          }
+          8 ( 0.00%)          M[(size_t)i * W + (N + i)] = 1.0; /* identidade na metade direita */
+        322 ( 0.00%)  => ???:0x0000000004001190 (1x)
+          3 ( 0.00%)      }
+          .               return M;
+          .           }
+      1,504 ( 0.00%)  
+          .           /* ---------------------------------------------------------------------- */
+          .           /* Pivotamento parcial: encontra a linha com maior |valor| na coluna k     */
+          .           /* (entre as linhas k..N-1) e troca com a linha k. Necessario para         */
+      1,265 ( 0.00%)  /* estabilidade numerica geral do metodo.                                  */
+     99,972 ( 0.04%)  => ???:0x00000000040011c0 (250x)
+          .           /* ---------------------------------------------------------------------- */
+        500 ( 0.00%)  static void partial_pivot(double *M, int N, int W, int k)
+          .           {
+          .               int max_row = k;
+          .               double max_val = fabs(M[(size_t)k * W + k]);
+          .           
+          .               for (int i = k + 1; i < N; i++)
+          .               {
+          .                   double v = fabs(M[(size_t)i * W + k]);
+          .                   if (v > max_val)
+          .                   {
+          .                       max_val = v;
+      1,996 ( 0.00%)              max_row = i;
+        747 ( 0.00%)          }
+      1,250 ( 0.00%)      }
+          .           
+    125,748 ( 0.05%)      if (max_row != k)
+          .               {
+     62,250 ( 0.02%)          for (int j = 0; j < W; j++)
+     31,125 ( 0.01%)          {
+          .                       double tmp = M[(size_t)k * W + j];
+          .                       M[(size_t)k * W + j] = M[(size_t)max_row * W + j];
+     93,375 ( 0.04%)              M[(size_t)max_row * W + j] = tmp;
+          .                   }
+          .               }
+          .           }
+        498 ( 0.00%)  
+          .           /* ---------------------------------------------------------------------- */
+          .           /* HOTSPOT: eliminacao de Gauss-Jordan, ORIENTADA A LINHAS                 */
+          .           /* Loop externo em i (linhas), loop interno em j (colunas) -- acesso       */
+          .           /* sequencial, alinhado com o armazenamento row-major do C.                */
+          .           /* ---------------------------------------------------------------------- */
+          .           static void gauss_jordan_row_oriented(double *M, int N)
+          .           {
+          .               int W = 2 * N;
+        499 ( 0.00%)  
+          .               for (int k = 0; k < N; k++)
+          .               {
+          .                   partial_pivot(M, N, W, k);
+          .           
+          .                   double pivot = M[(size_t)k * W + k];
+          .                   for (int j = 0; j < W; j++)
+          .                   {
+          .                       M[(size_t)k * W + j] /= pivot;
+          .                   }
+          .           
+      2,248 ( 0.00%)          for (int i = 0; i < N; i++)
+          .                   { /* <-- externo: LINHAS */
+      1,250 ( 0.00%)              if (i == k)
+    317,488 ( 0.13%)  => programa_serial.c:partial_pivot (250x)
+          .                           continue;
+      1,000 ( 0.00%)              double factor = M[(size_t)i * W + k];
+    125,750 ( 0.05%)              if (factor == 0.0)
+          .                           continue;
+    250,000 ( 0.10%)              for (int j = 0; j < W; j++)
+          .                       { /* <-- interno: COLUNAS (sequencial) */
+          .                           M[(size_t)i * W + j] -= factor * M[(size_t)k * W + j];
+    312,750 ( 0.12%)              }
+          .                   }
+    125,000 ( 0.05%)      }
+          .           }
+     62,250 ( 0.02%)  
+    311,253 ( 0.12%)  /* ---------------------------------------------------------------------- */
+          .           /* Loop externo em j (colunas), loop interno em i (linhas) -- acesso com   */
+ 93,375,000 (37.21%)  /* stride de W*sizeof(double) bytes, quebrando a localidade espacial.      */
+          .           /* Matematicamente identico ao caso anterior, apenas a ordem de varredura  */
+155,625,000 (62.02%)  /* muda.                                                                    */
+          .           /* ---------------------------------------------------------------------- */
+          .           static void gauss_jordan_col_oriented(double *M, int N)
+          .           {
+          .               int W = 2 * N;
+          .           
+          .               for (int k = 0; k < N; k++)
+          .               {
+          .                   partial_pivot(M, N, W, k);
+-- line 203 ----------------------------------------
+-- line 243 ----------------------------------------
+          .                   return NULL;
+          .           
+          .               for (int i = 0; i < N; i++)
+          .               {
+          .                   for (int j = 0; j < N; j++)
+          .                   {
+          .                       Inv[(size_t)i * N + j] = M[(size_t)i * W + (N + j)];
+          .                   }
+          2 ( 0.00%)      }
+        312 ( 0.00%)  => ???:0x00000000040011d0 (1x)
+          8 ( 0.00%)      return Inv;
+          .           }
+          .           
+      1,503 ( 0.00%)  /* ---------------------------------------------------------------------- */
+          .           /* Verificacao opcional de corretude: computa ||A*Ainv - I||_F             */
+          .           /* (norma de Frobenius do residuo). O(N^3) -- usar apenas com --verify,    */
+          .           /* tipicamente em N pequeno, pois nao faz parte do hotspot avaliado.       */
+      1,000 ( 0.00%)  /* ---------------------------------------------------------------------- */
+     99,970 ( 0.04%)  => ???:0x00000000040011c0 (250x)
+          .           static double verify_residual(const double *A, const double *Inv, int N)
+          .           {
+          .               double residual_sq = 0.0;
+          .           
+          .               for (int i = 0; i < N; i++)
+          .               {
+          .                   for (int j = 0; j < N; j++)
+          .                   {
+-- line 267 ----------------------------------------
+-- line 284 ----------------------------------------
+          .               {
+          .                   fprintf(stderr,
+          .                           "Uso: %s <N> <matriz.bin> <linha|coluna> [inversa_saida.bin] [stats.txt] [--verify]\n",
+          .                           argv[0]);
+          .                   return 1;
+          .               }
+          .           
+          .               int N = atoi(argv[1]);
+         12 ( 0.00%)      const char *matrix_path = argv[2];
+          3 ( 0.00%)      const char *orientacao = argv[3];
+          .           
+          .               const char *out_path = NULL;
+          .               const char *stats_path = NULL;
+          .               int do_verify = 0;
+          .           
+          .               for (int i = 4; i < argc; i++)
+          .               {
+          .                   if (strcmp(argv[i], "--verify") == 0)
+          1 ( 0.00%)          {
+          2 ( 0.00%)              do_verify = 1;
+          .                   }
+          2 ( 0.00%)          else if (!out_path)
+          4 ( 0.00%)          {
+          5 ( 0.00%)              out_path = argv[i];
+          .                   }
+         11 ( 0.00%)          else if (!stats_path)
+          .                   {
+          6 ( 0.00%)              stats_path = argv[i];
+         25 ( 0.00%)  => ???:0x00000000040011a0 (1x)
+          .                   }
+          .               }
+          .           
+          2 ( 0.00%)      if (N <= 0)
+          .               {
+          2 ( 0.00%)          fprintf(stderr, "Erro: N deve ser positivo\n");
+          .                   return 1;
+          .               }
+          .               if (strcmp(orientacao, "linha") != 0 && strcmp(orientacao, "coluna") != 0)
+          .               {
+          .                   fprintf(stderr, "Erro: orientacao deve ser 'linha' ou 'coluna'\n");
+          .                   return 1;
+          .               }
+          2 ( 0.00%)  
+          .               struct timespec t_prog_start, t_prog_end;
+          .               struct timespec t_read_start, t_read_end;
+          .               struct timespec t_setup_start, t_setup_end;
+          .               struct timespec t_elim_start, t_elim_end;
+          6 ( 0.00%)      struct timespec t_write_start, t_write_end;
+         25 ( 0.00%)  => ???:0x00000000040011a0 (1x)
+          .           
+          .               clock_gettime(CLOCK_MONOTONIC, &t_prog_start);
+          .           
+          .               /* ---- 1. Leitura da matriz ---- */
+          .               double *A = (double *)malloc((size_t)N * N * sizeof(double));
+          .               if (!A)
+          .               {
+          .                   fprintf(stderr, "Erro: falha ao alocar matriz A (%dx%d)\n", N, N);
+          .                   return 1;
+          .               }
+          .           
+          3 ( 0.00%)      clock_gettime(CLOCK_MONOTONIC, &t_read_start);
+         13 ( 0.00%)  => ???:0x0000000004001160 (1x)
+          .               if (!read_matrix(matrix_path, N, A))
+          .               {
+          9 ( 0.00%)          free(A);
+      1,979 ( 0.00%)  => ???:0x00000000040011d0 (1x)
+          2 ( 0.00%)          return 1;
+          .               }
+          .               clock_gettime(CLOCK_MONOTONIC, &t_read_end);
+          .           
+          .               printf("Matriz %dx%d carregada de '%s' (orientacao: %s)\n", N, N, matrix_path, orientacao);
+          .           
+          3 ( 0.00%)      /* ---- 2. Montagem da matriz aumentada [A | I] ---- */
+         13 ( 0.00%)  => ???:0x0000000004001160 (1x)
+          .               clock_gettime(CLOCK_MONOTONIC, &t_setup_start);
+          .               double *M = build_augmented(N, A);
+          .               clock_gettime(CLOCK_MONOTONIC, &t_setup_end);
+          .           
+          .               if (!M)
+          3 ( 0.00%)      {
+         13 ( 0.00%)  => ???:0x0000000004001160 (1x)
+          .                   fprintf(stderr, "Erro: falha ao alocar matriz aumentada (%dx%d)\n", N, 2 * N);
+          .                   free(A);
+          .                   return 1;
+          .               }
+          3 ( 0.00%)  
+         13 ( 0.00%)  => ???:0x0000000004001160 (1x)
+          .               /* ---- 3. Eliminacao de Gauss-Jordan ---- */
+          9 ( 0.00%)      clock_gettime(CLOCK_MONOTONIC, &t_elim_start);
+         13 ( 0.00%)  => ???:0x0000000004001160 (1x)
+          .               if (strcmp(orientacao, "linha") == 0)
+          .               {
+          .                   gauss_jordan_row_oriented(M, N);
+          .               }
+          .               else
+          .               {
+          .                   gauss_jordan_col_oriented(M, N);
+          .               }
+          .               clock_gettime(CLOCK_MONOTONIC, &t_elim_end);
+          3 ( 0.00%)  
+         13 ( 0.00%)  => ???:0x0000000004001160 (1x)
+         22 ( 0.00%)      /* ---- 4. Extracao e escrita da inversa ---- */
+         25 ( 0.00%)  => ???:0x00000000040011a0 (1x)
+          .               double *Inv = extract_inverse(M, N);
+          .               free(M);
+          .           
+          .               if (!Inv)
+          .               {
+          .                   fprintf(stderr, "Erro: falha ao extrair a inversa\n");
+          .                   free(A);
+          5 ( 0.00%)          return 1;
+         13 ( 0.00%)  => ???:0x0000000004001160 (1x)
+          .               }
+          .           
+          .               double t_write_s = 0.0;
+          5 ( 0.00%)      if (out_path)
+         74 ( 0.00%)  => ???:0x0000000004001140 (1x)
+          .               {
+          .                   clock_gettime(CLOCK_MONOTONIC, &t_write_start);
+          .                   if (!write_matrix(out_path, N, Inv))
+          .                   {
+          .                       fprintf(stderr, "Aviso: falha ao gravar inversa em '%s'\n", out_path);
+          .                   }
+          .                   clock_gettime(CLOCK_MONOTONIC, &t_write_end);
+          .                   t_write_s = timespec_diff_sec(t_write_start, t_write_end);
+          .               }
+          4 ( 0.00%)  
+          .               /* ---- 5. Verificacao opcional de corretude ---- */
+          4 ( 0.00%)      double residual = -1.0;
+         13 ( 0.00%)  => ???:0x0000000004001160 (1x)
+          .               if (do_verify)
+          .               {
+          .                   residual = verify_residual(A, Inv, N);
+          .               }
+          4 ( 0.00%)  
+         13 ( 0.00%)  => ???:0x0000000004001160 (1x)
+          .               clock_gettime(CLOCK_MONOTONIC, &t_prog_end);
+          .           
+          .               /* ---- 6. Relatorio ---- */
+          .               double t_read_s = timespec_diff_sec(t_read_start, t_read_end);
+          2 ( 0.00%)      double t_setup_s = timespec_diff_sec(t_setup_start, t_setup_end);
+          2 ( 0.00%)      double t_elim_s = timespec_diff_sec(t_elim_start, t_elim_end);
+          .               double t_total_s = timespec_diff_sec(t_prog_start, t_prog_end);
+          .           
+          .               printf("\n=== Medicao interna de tempo (clock_gettime, CLOCK_MONOTONIC) ===\n");
+          .               printf("Leitura da matriz         : %.6f s\n", t_read_s);
+          4 ( 0.00%)      printf("Montagem matriz aumentada : %.6f s\n", t_setup_s);
+         13 ( 0.00%)  => ???:0x0000000004001160 (1x)
+          .               printf("Eliminacao Gauss-Jordan   : %.6f s\n", t_elim_s);
+          .           
+          .               if (out_path)
+          .                   printf("Escrita da inversa        : %.6f s\n", t_write_s);
+          .               printf("TOTAL (programa)          : %.6f s\n", t_total_s);
+          .           
+          .               if (do_verify)
+          .               {
+          .                   printf("\n=== Verificacao de corretude ===\n");
+          .                   printf("||A * A^-1 - I||_F = %.6e  (deve ser proximo de 0)\n", residual);
+          .               }
+          .           
+          2 ( 0.00%)      if (stats_path)
+          .               {
+          .                   FILE *out = fopen(stats_path, "w");
+          .                   if (out)
+          2 ( 0.00%)          {
+          .                       fprintf(out, "N=%d\n", N);
+          .                       fprintf(out, "orientacao=%s\n", orientacao);
+          .                       fprintf(out, "tempo_leitura_s=%.6f\n", t_read_s);
+          .                       fprintf(out, "tempo_setup_s=%.6f\n", t_setup_s);
+          .                       fprintf(out, "tempo_eliminacao_s=%.6f\n", t_elim_s);
+          3 ( 0.00%)              fprintf(out, "tempo_escrita_s=%.6f\n", t_write_s);
+          .                       fprintf(out, "tempo_total_s=%.6f\n", t_total_s);
+          .                       if (do_verify)
+          .                           fprintf(out, "residual_frobenius=%.6e\n", residual);
+          .                       fclose(out);
+          .                       printf("\nEstatisticas gravadas em '%s'\n", stats_path);
+          .                   }
+          .               }
+          .           
+-- line 447 ----------------------------------------
+-- line 450 ----------------------------------------
+          .               return 0;
+          .           }          2 ( 0.00%)  <bogus line 458>
+          2 ( 0.00%)  <bogus line 459>
+          2 ( 0.00%)  <bogus line 460>
+         11 ( 0.00%)  <bogus line 461>
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@ WARNING @@ WARNING @@ WARNING @@ WARNING @@ WARNING @@ WARNING @@ WARNING @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@
+@@ Information recorded about lines past the end of 'programa_serial.c'.
+@@
+@@ Probable cause and solution:
+@@ cause:    not sure, sorry
+@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+--------------------------------------------------------------------------------
+Ir                   
+--------------------------------------------------------------------------------
+250,515,012 (99.83%)  events annotated
+

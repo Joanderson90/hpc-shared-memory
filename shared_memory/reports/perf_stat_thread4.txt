@@ -1,0 +1,24 @@
+=== PYTHON THREADING (N=2500, threads=4) ===
+Leitura           : 0.347870 s
+Setup (montagem)  : 0.311080 s
+Eliminacao        : 4301.939968 s
+TOTAL             : 4303.310516 s
+
+ Performance counter stats for 'python3 programa_thread.py 2500 matriz.bin 4 inversa_perf_t4.bin':
+
+         3,846,167      context-switches                 #    870.2 cs/sec  cs_per_second     
+            55,391      cpu-migrations                   #     12.5 migrations/sec  migrations_per_second
+           280,507      page-faults                      #     63.5 faults/sec  page_faults_per_second
+      4,420,091.55 msec task-clock                       #      1.0 CPUs  CPUs_utilized       
+     3,042,687,364      branch-misses                    #      0.1 %  branch_miss_rate         (33.37%)
+ 3,704,950,963,500      branches                         #    838.2 M/sec  branch_frequency     (50.07%)
+ 7,416,890,441,190      cpu-cycles                       #      1.7 GHz  cycles_frequency       (50.02%)
+20,144,207,660,705      instructions                     #      2.7 instructions  insn_per_cycle  (50.03%)
+ 2,531,440,466,080      stalled-cycles-frontend          #     0.34 frontend_cycles_idle        (50.06%)
+
+    4303.723923135 seconds time elapsed
+
+    4331.184195000 seconds user
+     127.227094000 seconds sys
+
+

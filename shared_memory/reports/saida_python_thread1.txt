@@ -1,0 +1,5 @@
+=== PYTHON THREADING (N=2500, threads=1) ===
+Leitura           : 0.373773 s
+Setup (montagem)  : 0.336683 s
+Eliminacao        : 1860.572521 s  <-- hotspot (GIL-bound)
+TOTAL             : 1861.703985 s

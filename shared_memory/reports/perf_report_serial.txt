@@ -1,0 +1,671 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 136K of event 'cpu/cycles/P'
+# Event count (approx.): 125816314865
+#
+# Children      Self  Command          Shared Object         Symbol                                     
+# ........  ........  ...............  ....................  ...........................................
+#
+    99.60%    88.75%  programa_serial  programa_serial       [.] main
+            |          
+             --99.60%--main
+                       |          
+                        --99.44%--gauss_jordan_row_oriented (inlined)
+                                  |          
+                                   --0.88%--asm_sysvec_apic_timer_interrupt
+                                             |          
+                                              --0.84%--sysvec_apic_timer_interrupt
+                                                        |          
+                                                         --0.75%--__sysvec_apic_timer_interrupt
+                                                                   |          
+                                                                    --0.74%--hrtimer_interrupt
+                                                                              |          
+                                                                               --0.70%--__hrtimer_run_queues
+                                                                                         |          
+                                                                                          --0.64%--tick_nohz_handler
+                                                                                                    |          
+                                                                                                     --0.53%--update_process_times
+
+    99.44%     0.00%  programa_serial  programa_serial       [.] gauss_jordan_row_oriented (inlined)
+            |
+            ---gauss_jordan_row_oriented (inlined)
+               |          
+                --0.88%--asm_sysvec_apic_timer_interrupt
+                          |          
+                           --0.84%--sysvec_apic_timer_interrupt
+                                     |          
+                                      --0.75%--__sysvec_apic_timer_interrupt
+                                                |          
+                                                 --0.74%--hrtimer_interrupt
+                                                           |          
+                                                            --0.70%--__hrtimer_run_queues
+                                                                      |          
+                                                                       --0.64%--tick_nohz_handler
+                                                                                 |          
+                                                                                  --0.53%--update_process_times
+
+     9.75%     9.75%  programa_serial  [kernel.kallsyms]     [k] asm_exc_nmi
+            |          
+             --9.75%--main
+                       |          
+                        --9.74%--gauss_jordan_row_oriented (inlined)
+
+     0.88%     0.00%  programa_serial  [kernel.kallsyms]     [.] asm_sysvec_apic_timer_interrupt
+            |          
+             --0.88%--asm_sysvec_apic_timer_interrupt
+                       |          
+                        --0.85%--sysvec_apic_timer_interrupt
+                                  |          
+                                   --0.76%--__sysvec_apic_timer_interrupt
+                                             |          
+                                              --0.75%--hrtimer_interrupt
+                                                        |          
+                                                         --0.71%--__hrtimer_run_queues
+                                                                   |          
+                                                                    --0.64%--tick_nohz_handler
+                                                                              |          
+                                                                               --0.53%--update_process_times
+
+     0.85%     0.00%  programa_serial  [kernel.kallsyms]     [.] sysvec_apic_timer_interrupt
+            |          
+             --0.85%--sysvec_apic_timer_interrupt
+                       |          
+                        --0.76%--__sysvec_apic_timer_interrupt
+                                  |          
+                                   --0.75%--hrtimer_interrupt
+                                             |          
+                                              --0.71%--__hrtimer_run_queues
+                                                        |          
+                                                         --0.64%--tick_nohz_handler
+                                                                   |          
+                                                                    --0.53%--update_process_times
+
+     0.76%     0.01%  programa_serial  [kernel.kallsyms]     [.] __sysvec_apic_timer_interrupt
+            |          
+             --0.75%--__sysvec_apic_timer_interrupt
+                       |          
+                        --0.75%--hrtimer_interrupt
+                                  |          
+                                   --0.71%--__hrtimer_run_queues
+                                             |          
+                                              --0.64%--tick_nohz_handler
+                                                        |          
+                                                         --0.53%--update_process_times
+
+     0.75%     0.01%  programa_serial  [kernel.kallsyms]     [.] hrtimer_interrupt
+            |          
+             --0.74%--hrtimer_interrupt
+                       |          
+                        --0.71%--__hrtimer_run_queues
+                                  |          
+                                   --0.64%--tick_nohz_handler
+                                             |          
+                                              --0.53%--update_process_times
+
+     0.71%     0.01%  programa_serial  [kernel.kallsyms]     [.] __hrtimer_run_queues
+            |          
+             --0.70%--__hrtimer_run_queues
+                       |          
+                        --0.64%--tick_nohz_handler
+                                  |          
+                                   --0.53%--update_process_times
+
+     0.64%     0.00%  programa_serial  [kernel.kallsyms]     [.] tick_nohz_handler
+            |          
+             --0.64%--tick_nohz_handler
+                       |          
+                        --0.53%--update_process_times
+
+     0.53%     0.00%  programa_serial  [kernel.kallsyms]     [.] update_process_times
+            |          
+             --0.53%--update_process_times
+
+     0.43%     0.02%  programa_serial  [kernel.kallsyms]     [.] sched_tick
+     0.30%     0.05%  programa_serial  [kernel.kallsyms]     [.] task_tick_fair
+     0.25%     0.24%  programa_serial  programa_serial       [.] partial_pivot
+     0.22%     0.00%  programa_serial  [kernel.kallsyms]     [.] asm_exc_page_fault
+     0.16%     0.05%  programa_serial  libc.so.6             [.] __memmove_sse2_unaligned_erms
+     0.15%     0.00%  programa_serial  [kernel.kallsyms]     [.] exc_page_fault
+     0.15%     0.00%  programa_serial  [kernel.kallsyms]     [.] entry_SYSCALL_64_after_hwframe
+     0.15%     0.00%  programa_serial  [kernel.kallsyms]     [.] do_syscall_64
+     0.15%     0.00%  programa_serial  [kernel.kallsyms]     [.] x64_sys_call
+     0.15%     0.01%  programa_serial  [kernel.kallsyms]     [.] do_user_addr_fault
+     0.13%     0.00%  programa_serial  [kernel.kallsyms]     [.] handle_mm_fault
+     0.13%     0.01%  programa_serial  [kernel.kallsyms]     [.] __handle_mm_fault
+     0.12%     0.00%  programa_serial  [kernel.kallsyms]     [.] handle_pte_fault
+     0.09%     0.00%  programa_serial  [kernel.kallsyms]     [.] tick_do_update_jiffies64
+     0.09%     0.05%  programa_serial  [kernel.kallsyms]     [k] update_curr
+     0.09%     0.00%  programa_serial  [kernel.kallsyms]     [.] do_anonymous_page
+     0.08%     0.01%  programa_serial  [kernel.kallsyms]     [.] update_wall_time
+     0.07%     0.01%  programa_serial  [kernel.kallsyms]     [.] __timekeeping_advance
+     0.06%     0.03%  programa_serial  [kernel.kallsyms]     [.] rep_movs_alternative
+     0.06%     0.00%  programa_serial  [unknown]             [k] 0x00005cff069c2480
+     0.06%     0.00%  programa_serial  programa_serial       [.] read_matrix (inlined)
+     0.06%     0.00%  programa_serial  libc.so.6             [.] __fread_chk
+     0.06%     0.00%  programa_serial  libc.so.6             [.] __libc_read (inlined)
+     0.06%     0.00%  programa_serial  [kernel.kallsyms]     [.] __x64_sys_read
+     0.06%     0.00%  programa_serial  [kernel.kallsyms]     [.] ksys_read
+     0.06%     0.00%  programa_serial  [kernel.kallsyms]     [.] vfs_read
+     0.06%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_file_read_iter
+     0.06%     0.00%  programa_serial  [kernel.kallsyms]     [.] generic_file_read_iter
+     0.06%     0.00%  programa_serial  [kernel.kallsyms]     [.] filemap_read
+     0.06%     0.00%  programa_serial  [kernel.kallsyms]     [.] irq_exit_rcu
+     0.06%     0.00%  programa_serial  [kernel.kallsyms]     [.] __irq_exit_rcu
+     0.06%     0.00%  programa_serial  [kernel.kallsyms]     [.] copy_page_to_iter
+     0.06%     0.02%  programa_serial  [kernel.kallsyms]     [.] account_user_time
+     0.06%     0.00%  programa_serial  [kernel.kallsyms]     [.] alloc_pages_mpol
+     0.06%     0.00%  programa_serial  [kernel.kallsyms]     [.] handle_softirqs
+     0.06%     0.00%  programa_serial  [kernel.kallsyms]     [.] account_process_tick
+     0.06%     0.00%  programa_serial  [kernel.kallsyms]     [.] alloc_anon_folio
+     0.06%     0.01%  programa_serial  [kernel.kallsyms]     [.] timekeeping_update_from_shadow
+     0.06%     0.00%  programa_serial  [kernel.kallsyms]     [.] __alloc_frozen_pages_noprof
+     0.05%     0.02%  programa_serial  [kernel.kallsyms]     [.] update_cfs_rq_load_avg
+     0.05%     0.01%  programa_serial  [kernel.kallsyms]     [.] update_cfs_group
+     0.05%     0.00%  programa_serial  [kernel.kallsyms]     [.] vma_alloc_folio_noprof
+     0.05%     0.00%  programa_serial  [kernel.kallsyms]     [k] get_page_from_freelist
+     0.05%     0.05%  programa_serial  [kernel.kallsyms]     [k] __irqentry_text_end
+     0.05%     0.00%  programa_serial  [kernel.kallsyms]     [.] perf_event_task_tick
+     0.04%     0.00%  programa_serial  libc.so.6             [.] __munmap
+     0.04%     0.00%  programa_serial  [kernel.kallsyms]     [.] __x64_sys_munmap
+     0.04%     0.00%  programa_serial  [kernel.kallsyms]     [.] __vm_munmap
+     0.04%     0.00%  programa_serial  [kernel.kallsyms]     [.] do_vmi_munmap
+     0.04%     0.00%  programa_serial  [kernel.kallsyms]     [.] do_vmi_align_munmap
+     0.04%     0.00%  programa_serial  [kernel.kallsyms]     [.] vms_complete_munmap_vmas
+     0.04%     0.00%  programa_serial  [kernel.kallsyms]     [.] unmap_region
+     0.04%     0.00%  programa_serial  [kernel.kallsyms]     [.] run_timer_softirq
+     0.04%     0.01%  programa_serial  [kernel.kallsyms]     [.] reweight_entity
+     0.04%     0.04%  programa_serial  [kernel.kallsyms]     [k] timerqueue_add
+     0.04%     0.00%  programa_serial  [kernel.kallsyms]     [.] unmap_vmas
+     0.04%     0.00%  programa_serial  [kernel.kallsyms]     [.] unmap_single_vma
+     0.04%     0.00%  programa_serial  [kernel.kallsyms]     [.] unmap_page_range
+     0.04%     0.00%  programa_serial  [kernel.kallsyms]     [.] zap_pmd_range.isra.0
+     0.04%     0.00%  programa_serial  programa_serial       [.] write_matrix (inlined)
+     0.04%     0.00%  programa_serial  [kernel.kallsyms]     [.] zap_pte_range
+     0.03%     0.00%  programa_serial  [kernel.kallsyms]     [.] tmigr_handle_remote
+     0.03%     0.00%  programa_serial  [kernel.kallsyms]     [.] tmigr_handle_remote_up
+     0.03%     0.03%  programa_serial  [kernel.kallsyms]     [k] __update_load_avg_cfs_rq
+     0.03%     0.00%  programa_serial  [kernel.kallsyms]     [.] enqueue_hrtimer
+     0.03%     0.02%  programa_serial  [kernel.kallsyms]     [k] perf_adjust_freq_unthr_context
+     0.03%     0.00%  programa_serial  [kernel.kallsyms]     [.] post_alloc_hook
+     0.03%     0.03%  programa_serial  [kernel.kallsyms]     [k] kernel_init_pages
+     0.03%     0.02%  programa_serial  [kernel.kallsyms]     [k] sugov_update_single_freq
+     0.03%     0.00%  programa_serial  libc.so.6             [.] _IO_fwrite
+     0.03%     0.00%  programa_serial  libc.so.6             [.] _IO_new_file_xsputn (inlined)
+     0.03%     0.00%  programa_serial  libc.so.6             [.] new_do_write (inlined)
+     0.03%     0.00%  programa_serial  libc.so.6             [.] __libc_write (inlined)
+     0.03%     0.00%  programa_serial  [kernel.kallsyms]     [.] __x64_sys_write
+     0.03%     0.00%  programa_serial  [kernel.kallsyms]     [.] ksys_write
+     0.03%     0.00%  programa_serial  [kernel.kallsyms]     [.] vfs_write
+     0.03%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_file_write_iter
+     0.03%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_buffered_write_iter
+     0.03%     0.00%  programa_serial  [kernel.kallsyms]     [.] generic_perform_write
+     0.03%     0.03%  programa_serial  [kernel.kallsyms]     [k] __update_load_avg_se
+     0.03%     0.00%  programa_serial  [kernel.kallsyms]     [.] tmigr_handle_remote_cpu
+     0.03%     0.00%  programa_serial  [kernel.kallsyms]     [k] folios_put_refs
+     0.03%     0.00%  programa_serial  [kernel.kallsyms]     [.] sched_balance_trigger
+     0.02%     0.02%  programa_serial  [kernel.kallsyms]     [.] __cgroup_account_cputime_field
+     0.02%     0.00%  programa_serial  [kernel.kallsyms]     [.] free_pages_and_swap_cache
+     0.02%     0.00%  programa_serial  [kernel.kallsyms]     [.] __tlb_batch_free_encoded_pages
+     0.02%     0.00%  programa_serial  [kernel.kallsyms]     [.] raw_notifier_call_chain
+     0.02%     0.00%  programa_serial  [kernel.kallsyms]     [.] do_wp_page
+     0.02%     0.00%  programa_serial  [kernel.kallsyms]     [.] wp_page_copy
+     0.02%     0.01%  programa_serial  [kernel.kallsyms]     [.] nohz_balancer_kick
+     0.02%     0.01%  programa_serial  [kernel.kallsyms]     [.] rcu_sched_clock_irq
+     0.02%     0.00%  programa_serial  [kernel.kallsyms]     [.] timer_expire_remote
+     0.02%     0.00%  programa_serial  [kernel.kallsyms]     [.] __remove_hrtimer
+     0.02%     0.00%  programa_serial  [kernel.kallsyms]     [.] folio_add_lru_vma
+     0.02%     0.00%  programa_serial  [kernel.kallsyms]     [.] tlb_flush_mmu
+     0.02%     0.00%  programa_serial  [kernel.kallsyms]     [.] __run_timers
+     0.02%     0.01%  programa_serial  [kernel.kallsyms]     [k] update_se
+     0.02%     0.02%  programa_serial  [kernel.kallsyms]     [k] native_irq_return_iret
+     0.02%     0.00%  programa_serial  [kernel.kallsyms]     [.] __folio_batch_add_and_move
+     0.02%     0.02%  programa_serial  [kernel.kallsyms]     [k] error_entry
+     0.02%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_da_write_begin
+     0.02%     0.02%  programa_serial  [kernel.kallsyms]     [k] _raw_spin_lock
+     0.02%     0.00%  programa_serial  [kernel.kallsyms]     [.] folio_add_lru
+     0.02%     0.01%  programa_serial  [kernel.kallsyms]     [.] tick_program_event
+     0.02%     0.00%  programa_serial  [kernel.kallsyms]     [.] rmqueue.isra.0
+     0.02%     0.00%  programa_serial  [kernel.kallsyms]     [.] sched_clock_cpu
+     0.02%     0.01%  programa_serial  [kernel.kallsyms]     [k] zap_present_ptes.constprop.0
+     0.02%     0.00%  programa_serial  [kernel.kallsyms]     [.] free_unref_folios
+     0.02%     0.00%  programa_serial  [kernel.kallsyms]     [k] irqentry_exit
+     0.02%     0.00%  programa_serial  [kernel.kallsyms]     [.] __mem_cgroup_charge
+     0.02%     0.02%  programa_serial  [kernel.kallsyms]     [k] sync_regs
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [k] kick_ilb
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] rb_next
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [k] folio_batch_move_lru
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] __css_rstat_updated
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] cpuacct_account_field
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] call_timer_fn
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] try_to_wake_up
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [.] update_vsyscall
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [k] free_frozen_page_commit.isra.0
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] charge_memcg
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] wake_up_process
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] lruvec_stat_mod_folio
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] notifier_call_chain
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] folio_add_new_anon_rmap
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] pvclock_gtod_notify
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] sched_clock
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] sched_clock_noinstr
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] arch_scale_freq_tick
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] __rmqueue_pcplist
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] native_sched_clock
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] native_write_msr
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] arch_exit_to_user_mode_prepare.isra.0
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] process_timeout
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_da_get_block_prep
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_block_write_begin
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [k] lru_add
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] free_pcppages_bulk
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] mod_memcg_lruvec_state
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] generic_exec_single
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] rcu_core_si
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] rcu_core
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] run_posix_cpu_timers
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] read_tsc
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [k] x86_pmu_disable
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] folio_remove_rmap_ptes
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [k] __folio_mod_stat
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_da_map_blocks.constprop.0
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] avg_vruntime
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] cpufreq_this_cpu_can_update
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [k] select_task_rq
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] smp_call_function_single_async
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] __smp_call_single_queue
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] __calc_delta.constprop.0
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] __page_cache_release.part.0
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] sugov_get_util
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] __free_one_page
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] try_charge_memcg
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] effective_cpu_util
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] place_entity
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] clockevents_program_event
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] native_read_msr
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [k] rcu_pending
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] __filemap_get_folio_mpol
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] filemap_alloc_folio_noprof
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] folio_alloc_noprof
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [k] __rcu_read_unlock
+     0.01%     0.00%  programa_serial  programa_serial       [.] build_augmented (inlined)
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] update_deadline
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] update_rq_clock
+     0.01%     0.00%  programa_serial  libc.so.6             [.] _IO_new_fopen (inlined)
+     0.01%     0.00%  programa_serial  libc.so.6             [.] __fopen_internal (inlined)
+     0.01%     0.00%  programa_serial  libc.so.6             [.] _IO_new_file_fopen (inlined)
+     0.01%     0.00%  programa_serial  libc.so.6             [.] _IO_file_open
+     0.01%     0.00%  programa_serial  libc.so.6             [.] __libc_open64 (inlined)
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] __x64_sys_openat
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] do_sys_openat2
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] do_file_open
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] path_openat
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] do_open
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] do_truncate
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] notify_change
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_setattr
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] truncate_pagecache
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] truncate_inode_pages_range
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [k] lru_gen_add_folio
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] mod_lruvec_state
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_insert_delayed_blocks
+     0.01%     0.00%  programa_serial  libc.so.6             [.] _IO_new_fclose (inlined)
+     0.01%     0.00%  programa_serial  libc.so.6             [.] _IO_acquire_lock_fct (inlined)
+     0.01%     0.00%  programa_serial  libc.so.6             [.] __close_nocancel
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] __x64_sys_close
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] fput_close_sync
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] __fput
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_release_file
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_alloc_da_blocks
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] filemap_flush
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] filemap_writeback
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] do_writepages
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_writepages
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_do_writepages
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] select_task_rq_fair
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] asm_common_interrupt
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] common_interrupt
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] ktime_get_update_offsets_now
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] _raw_spin_lock_irqsave
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] __raw_spin_lock_irqsave
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] irq_enter_rcu
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] lru_gen_del_folio.constprop.0
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] update_fast_timekeeper
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] mas_walk
+     0.01%     0.01%  programa_serial  [kernel.kallsyms]     [k] irq_work_tick
+     0.01%     0.00%  programa_serial  [kernel.kallsyms]     [.] _raw_spin_unlock
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] rmqueue_bulk
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __pte_offset_map
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __rcu_read_lock
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] mod_node_page_state
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] tmigr_update_events
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] dl_server_update
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] propagate_entity_load_avg
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] ktime_get
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] update_entity_lag
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] sched_balance_softirq
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] lock_vma_under_rcu
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] update_vdso_time_data
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] rb_erase
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] count_memcg_events
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] truncate_cleanup_folio
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_invalidate_folio
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] tlb_finish_mmu
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] check_cpu_stall
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] memcg1_commit_charge
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] timekeeping_adjust
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] invoke_rcu_core
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] lapic_next_deadline
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] note_gp_changes
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] acct_account_cputime
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] block_invalidate_folio
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] x86_pmu_enable
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] block_commit_write
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_da_write_end
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_da_do_write_end.isra.0
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] block_write_end
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_es_insert_delayed_extent
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] mpage_map_and_submit_buffers
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] mpage_map_and_submit_extent
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] pte_offset_map_rw_nolock
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] idle_cpu
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] ttwu_queue_wakelist
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] irqentry_enter
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] schedule
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __schedule
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] sched_balance_domains
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] ntp_tick_length
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] calc_global_load
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] tmigr_next_groupevt
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] update_curr_dl_se
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __note_gp_changes
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] rcu_report_qs_rdp
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] filemap_release_folio
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_release_folio
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] jbd2_journal_try_to_free_buffers
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] intel_pmu_disable_all
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] fpregs_assert_state_consistent
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __x86_indirect_thunk_rax
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] pte_offset_map_lock
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] lock_mm_and_find_vma
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __es_insert_extent
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] sugov_hold_freq
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] wake_affine
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] tick_nohz_get_idle_calls_cpu
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] tmigr_requires_handle_remote
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] _raw_spin_trylock
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] rtl8169_interrupt
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __common_interrupt
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] handle_edge_irq
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] handle_irq_event
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __handle_irq_event_percpu
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] raise_softirq
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] hrtimer_forward
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] rcu_report_qs_rnp
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __folio_batch_release
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] native_apic_msr_eoi
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] _raw_spin_unlock_irqrestore
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] sched_balance_rq
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] mt_find
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] kmem_cache_free
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] try_to_free_buffers
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] free_buffer_head
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] intel_pmu_enable_all
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] ext4_da_reserve_space
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_es_lookup_extent
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ext4_bio_write_folio
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] mpage_submit_folio
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __mod_zone_page_state
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] get_mem_cgroup_from_mm
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] policy_nodemask
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] find_vma
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] _copy_to_iter
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] sugov_iowait_apply
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] cpuacct_charge
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __cgroup_account_cputime
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __hrtimer_next_event_base
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] hrtimer_update_next_event
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] rcu_segcblist_ready_cbs
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] _find_next_and_bit
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] raw_spin_rq_unlock
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] rb_insert_color
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] delayed_work_timer_fn
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __queue_work
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __queue_work.part.0
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] kick_pool
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] _raw_spin_unlock_irq
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] net_rx_action
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __napi_poll
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] rtl8169_poll
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] napi_complete_done
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] netif_receive_skb_list_internal
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __netif_receive_skb_list_core
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ip_list_rcv
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ip_sublist_rcv
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ip_list_rcv_finish
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __wake_up_common
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ep_poll_callback
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ep_autoremove_wake_function
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] default_wake_function
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] profile_tick
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] _find_next_bit
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] sched_balance_update_blocked_averages
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __sched_balance_update_blocked_averages
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] update_other_load_avgs
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] ntp_get_next_leap
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] tasklet_hi_action
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] workqueue_softirq_action
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] bh_worker
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] process_one_work
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] usb_giveback_urb_bh
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __usb_hcd_giveback_urb
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] sugov_iowait_boost
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] sched_balance_find_src_group
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] update_sd_lb_stats.constprop.0
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] pick_next_task_fair
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] pick_next_task
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] refill_obj_stock
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __memcg_slab_free_hook
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] call_function_single_prep_ipi
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] housekeeping_cpumask.cold
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] _find_first_bit
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] native_flush_tlb_one_user
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ptep_clear_flush
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] flush_tlb_mm_range
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] flush_tlb_func
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __raise_softirq_irqoff
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __intel_pmu_enable_all.isra.0
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] error_return
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] _raw_read_unlock
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] mpage_process_page_bufs
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] mpage_prepare_extent_to_map
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __map_range_leaf
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] blk_finish_plug
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __blk_flush_plug
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] blk_mq_flush_plug_list
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] blk_mq_dispatch_list
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] blk_mq_run_hw_queue
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] blk_mq_sched_dispatch_requests
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __blk_mq_sched_dispatch_requests
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __blk_mq_do_dispatch_sched
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] blk_mq_dispatch_rq_list
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] scsi_queue_rq
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] scsi_dispatch_cmd
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ata_scsi_queuecmd
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __ata_scsi_queuecmd
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ata_scsi_translate
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ata_qc_issue
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] dma_map_sg_attrs
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __dma_map_sg_attrs
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] iommu_dma_map_sg
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] iommu_map_sg
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] iommu_map_nosync
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] vtdss_map_range
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] do_map
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __map_range
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] filemap_get_read_batch
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] filemap_get_pages
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] page_counter_try_charge
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] set_ptes.isra.0
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] _dl_start_user
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] _dl_start
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] _dl_start_final (inlined)
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] vms_gather_munmap_vmas
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __split_vma
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] _dl_sysdep_start
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] native_send_call_func_single_ipi
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] sugov_should_update_freq.part.0
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] timer_unlock_remote_bases
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] handle_fasteoi_irq
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] select_idle_sibling
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __vma_start_write
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __vma_start_exclude_readers
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] calc_global_load_tick
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ip_sublist_rcv_finish
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ip_local_deliver
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ip_local_deliver_finish
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ip_protocol_deliver_rcu
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] udp_rcv
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __udp4_lib_rcv
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] udp_unicast_rcv_skb
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] udp_queue_rcv_skb
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] udp_queue_rcv_one_skb
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __udp_enqueue_schedule_skb
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] sock_def_readable
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __wake_up_sync_key
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __wake_up_sync
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] _raw_spin_lock_irq
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] nohz_balance_exit_idle
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] get_next_freq
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __bitmap_and
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] arch_scale_cpu_capacity
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] record_times
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ttwu_do_activate
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] enqueue_task
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] psi_task_change
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __msecs_to_jiffies
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] led_trigger_blink_oneshot
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] usb_led_activity
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] tcp_orphan_update
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] prepare_task_switch
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] switch_hrtimer_base
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] start_dl_timer
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] hrtimer_start_range_ns
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] update_rt_rq_load_avg
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] pud_val
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] kthread_is_per_cpu
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] fetch_next_timer_interrupt
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] fetch_next_timer_interrupt_remote
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] psi_group_change
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] psi_task_switch
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] task_h_load
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] check_update_overutilized_status
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] fib_table_lookup
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ip_rcv_finish_core
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ip_route_use_hint
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] fib_validate_source
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __fib_validate_source
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __nr_to_section
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] put_prev_entity
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] update_dl_rq_load_avg
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] x2apic_send_IPI
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] rcu_accelerate_cbs
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] free_tail_page_prepare
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] wake_up_bit
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] hid_irq_in
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] hid_safe_input_report
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __hid_input_report
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] hid_report_raw_event
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] hidinput_report_event
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] input_event
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] input_handle_event
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] input_event_dispose
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] input_pass_values
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] evdev_events
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] evdev_pass_values
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __wake_up
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] jbd2_journal_grab_journal_head
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] cpufreq_driver_fast_switch
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] intel_cpufreq_fast_switch
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __mem_cgroup_uncharge_folios
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] uncharge_batch
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] memcg1_uncharge_batch
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] update_sg_lb_stats
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __x86_indirect_thunk_r12
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] hrtimer_try_to_cancel
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] hrtimer_try_to_cancel.part.0
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] cpu_util_cfs_boost
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] ehci_handle_start_intr_unlinks
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] _raw_write_unlock
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] raw_spin_rq_lock_nested
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] mark_buffer_dirty
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __pkru_allows_pkey
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] bh_get_inode_and_lblk_num
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] fscrypt_mergeable_bio_bh
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] up_write
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] bio_add_page
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] bio_add_folio
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __dquot_alloc_space
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] vm_normal_page
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] folio_lruvec_lock_irqsave
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] percpu_counter_add_batch
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] dl_main
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __folio_throttle_swaprate
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] mksaveddirty_shift
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] early_xen_iret_patch
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __pkru_allows_pkey
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] filemap_map_pages
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] do_fault
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] do_read_fault
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] vm_mmap_pgoff
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] rtld_timer_accum (inlined)
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] rtld_timer_stop (inlined)
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] _dl_map_object_deps
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] _dl_catch_exception
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] set_catch (inlined)
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] openaux
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] _dl_map_object
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] do_mmap
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] mmap_region
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __mmap_region
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] page_copy_sane
+     0.00%     0.00%  programa_serial  libc.so.6             [.] __libc_early_init
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] rtld_timer_start (inlined)
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] _dl_relocate_object
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __refill_objects_node
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] _dl_map_object_from_fd
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] _dl_map_segments (inlined)
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] __mmap64 (inlined)
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __x64_sys_mmap
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] ksys_mmap_pgoff
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __mmap_setup
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] mas_preallocate
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] kmem_cache_prefill_sheaf
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __prefill_sheaf_pfmemalloc
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] refill_objects
+     0.00%     0.00%  programa_serial  [unknown]             [k] 0x00007a3313cef03b
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] __x64_sys_execve
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] do_execveat_common.isra.0
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] bprm_execve
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] bprm_execve.part.0
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] exec_binprm
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] load_elf_binary
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] elf_load
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] vm_mmap
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] _dl_cache_libcmp
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] init_cpu_features.constprop.0
+     0.00%     0.00%  programa_serial  ld-linux-x86-64.so.2  [.] __brk (inlined)
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] __build_id_parse
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [k] ima_file_mmap
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] load_elf_interp.isra.0
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] perf_event_mmap
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] perf_event_mmap_event
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] build_id_parse_nofault
+     0.00%     0.00%  programa_serial  [kernel.kallsyms]     [.] security_mmap_file
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#
