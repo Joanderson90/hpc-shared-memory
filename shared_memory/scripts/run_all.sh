@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# run_all.sh — Paralelismo com Memoria Compartilhada (PGCC011)
+# run_all.sh — Paralelismo com Memoria Compartilhada
 # ==============================================================================
 # Automatiza: compilacao, geracao de dados, execucao das 5 versoes e coleta
 # completa de profiling (/usr/bin/time -v, gprof, perf, Valgrind, strace,
